@@ -17,18 +17,18 @@ ui <- fluidPage(
       helpText("You can see what kind of crimes occurred 
                in a selected the neighborhood."),
       selectInput("neighborhood", label = h3("Select neighborhood"), 
-                  choices = list("HIGH POINT" = 1, "SLU/CASCADE" = 2, 
-                                 "SANDPOINT" = 3, "LAKEWOOD/SEWARD PARK" = 4, 
-                                 "DOWNTOWN COMMERCIAL" = 5,"BELLTOWN" = 6, 
-                                 "SODO" = 7, "CAPITOL HILL" = 8,
-                                 "BALLARD SOUTH" = 9, "WALLINGFORD" = 10, 
-                                 "MAGNOLIA" = 11, "UNIVERSITY" = 12, 
-                                 "NORTHGATE" = 13, "PIONEER SQUARE" = 14, 
-                                 "CENTRAL AREA/SQUIRE PARK" = 15, 
-                                 "BALLARD NORTH" = 16, "FAUNTLEROY SW" = 17,
-                                 "LAKECITY" = 18, "EASTLAKE - EAST" = 19,
-                                 "QUEEN ANNE" = 20, "MADISON PARK" = 21, 
-                                 "ROXHILL/WESTWOOD/ARBOR HEIGHTS" = 22,
+                  choices = list("HIGH POINT" = "High Point", "SLU/CASCADE" = "SLU/Cascade", 
+                                 "SANDPOINT" = "Sandpoint", "LAKEWOOD/SEWARD PARK" = "Lakewood/Seward Park", 
+                                 "DOWNTOWN COMMERCIAL" = "Downtown Commercial","BELLTOWN" = "Belltown", 
+                                 "SODO" = "SODO", "CAPITOL HILL" = "Capitol Hill",
+                                 "BALLARD SOUTH" = "Ballard South", "WALLINGFORD" = "Wallingford", 
+                                 "MAGNOLIA" = "Magnolia", "UNIVERSITY" = "University", 
+                                 "NORTHGATE" = "Northgate", "PIONEER SQUARE" = "Pioneer Square", 
+                                 "CENTRAL AREA/SQUIRE PARK" = "Central Area/Squire Park", 
+                                 "BALLARD NORTH" = "Ballard North", "FAUNTLEROY SW" = "Fauntleroy SW",
+                                 "LAKECITY" = "Lakecity", "EASTLAKE - EAST" = "Eastlake - East",
+                                 "QUEEN ANNE" = "Queen Anne", "MADISON PARK" = "Madison Park", 
+                                 "ROXHILL/WESTWOOD/ARBOR HEIGHTS" = "Roxhill/Westwood/Arbor Heights",
                                  "PHINNEY RIDGE" = 23, "MILLER PARK " = 24, 
                                  "ROOSEVELT/RAVENNA" = 25,
                                  "NORTH BEACON HILL" = 26, 
@@ -56,8 +56,9 @@ ui <- fluidPage(
 
     # Show a bar chart of neighborhood vs. subcatagories of crimes. 
     mainPanel(
-      plotOutput("graphone"),
-      textOutput("graphone_intro")
+      textOutput("graphone_intro"),
+      br(),
+      plotOutput("graphone")
     )
   )
 )
