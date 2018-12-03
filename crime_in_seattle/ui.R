@@ -16,6 +16,7 @@ shinyUI(fluidPage(
     mainPanel(
        plotOutput("plot")
     )
+  )
 
   )
-))
+)
