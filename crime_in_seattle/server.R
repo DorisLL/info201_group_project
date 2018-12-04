@@ -11,8 +11,9 @@ shinyServer(function(input, output) {
                             data$Crime.Subcategory %in% toupper(input$allsubcat)
     )
     data_use <- count(group_by(selected_data, Year, Neighborhood))
-    
     ggplot(data_use, aes(Year, n, group = data_use$Neighborhood)) +
+      ggtitle("Seattle Crime Rates") +
+      xlab("Year") + ylab("Rate of Crime") +
       geom_line(aes(col = Neighborhood)) +
       geom_point()
   })
