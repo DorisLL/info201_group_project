@@ -30,5 +30,30 @@ shinyServer(function(input, output) {
   output$graphone_intro <- renderText({
     paste0("This graph shows the frequencies of each crime subcategory for the ", input$neighborhood, " neighborhood.")
   })
+
+  output$plot <- renderPlot({
+    if(is.null(input$allneighborhood)| is.null(input$allsubcat))
+      return()
+    selected_data <- filter(crime_data, crime_data$Year >= input$years[1], crime_data$Year <= input$years[2],
+                            crime_data$Neighborhood %in% toupper(input$allneighborhood),
+                            crime_data$Crime.Subcategory %in% toupper(input$allsubcat)
+    )
+    data_use <- count(group_by(selected_data, Year, Neighborhood))
+    ggplot(data_use, aes(Year, n, group = data_use$Neighborhood)) +
+      ggtitle("Seattle Crime Rates") +
+      xlab("Year") + ylab("Rate of Crime") +
+      geom_line(aes(col = Neighborhood)) +
+      geom_point()
+  })
+
+  output$select_nh <-renderUI({
+    checkboxGroupInput("allneighborhood", label = h3("Select neighborhood"),
+                       tolower(unique(crime_data$Neighborhood)))
+  })
+  
+  output$select_type <- renderUI ({
+    checkboxGroupInput("allsubcat", label = h3("Select categories of crime"),
+                       tolower(unique(crime_data$Crime.Subcategory)), tolower(unique(crime_data$Crime.Subcategory)))
+  })
   
 })
