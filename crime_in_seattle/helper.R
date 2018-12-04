@@ -10,6 +10,8 @@ crime_data <- read.csv('data/Crime_Data.csv') %>% data.frame()
 crime_data <- crime_data %>% filter(Neighborhood != 'UNKNOWN')
 crime_data <- crime_data %>% filter(Precinct != 'UNKNOWN')
 
+# Remove the 'UNKNOWN' precinct
+crime_data <- crime_data %>% filter(Precinct != '')
 # Change Date Formats
 crime_data$Occurred.Date <- as.Date(crime_data$Occurred.Date, format = "%m/%d/%Y")
 crime_data$Day <- crime_data$Occurred.Date %>% day()
