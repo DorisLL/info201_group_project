@@ -8,6 +8,7 @@ crime_data <- read.csv('data/Crime_Data.csv') %>% data.frame()
 
 # Remove the 'UNKNOWN' neighborhood
 crime_data <- crime_data %>% filter(Neighborhood != 'UNKNOWN')
+crime_data <- crime_data %>% filter(Precinct != 'UNKNOWN')
 
 # Change Date Formats
 crime_data$Occurred.Date <- as.Date(crime_data$Occurred.Date, format = "%m/%d/%Y")
@@ -19,7 +20,11 @@ crime_data$Year <- crime_data$Occurred.Date %>% year()
 crime_data <- filter(crime_data, crime_data$Year > 2007)
 
 # Select only needed variables
-crime_data <- crime_data %>% select("Month", "Day", "Year", "Occurred.Time", "Crime.Subcategory", "Neighborhood")
+crime_data <- crime_data %>% select("Month", "Day", "Year", "Occurred.Time", "Crime.Subcategory", "Neighborhood", "Precinct")
+
+# Fix Time 
+crime_data$Occurred.Time <- as.POSIXlt(crime_data$Occurred.Time, format="%H:%M")$hour
+crime_data$Occurred.Time[is.na(crime_data$Occurred.Time)] <- 0
 
 # Function to remove long category and retain only the main category
 main_category <- function(word){
@@ -28,7 +33,7 @@ main_category <- function(word){
   main_value <- value[1]
 }
 
-# Apply Function to Column
+# Apply main_category function to column
 crime_data$Crime.Subcategory <- crime_data$Crime.Subcategory %>% as.character() %>% lapply(main_category)
 
 crime_data <- crime_data %>% as.matrix()

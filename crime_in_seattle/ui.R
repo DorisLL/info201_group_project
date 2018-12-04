@@ -46,9 +46,9 @@ ui <- fluidPage(
 
     # Show a bar chart of neighborhood vs. subcatagories of crimes. 
     mainPanel(
-      textOutput("graphone_intro"),
+      plotOutput("graphone"),
       br(),
-      plotOutput("graphone")
+      textOutput("graphone_intro")
     )
   )
 )
