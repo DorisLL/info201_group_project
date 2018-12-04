@@ -43,11 +43,11 @@ ui <- fluidPage(
                                  "CLAREMONT/RAINIER VISTA" = "Claremont/Rainier Vista", 
                                  "COMMERCIAL DUWAMISH" = "Commercial Duwamish"), 
                   selected = 1), 
-                  uiOutput("select_nh"),
-                  uiOutput("select_type"),
-                  sliderInput("years", h3("Years:"),
-                              2008, 2018, 
-                              c(2008, 2018))),
+      uiOutput("select_pc"),
+      uiOutput("select_type"),
+      sliderInput("years", h3("Years:"),
+                  2008, 2018, 
+                  c(2008, 2018))),
 
     # Show a bar chart of neighborhood vs. subcatagories of crimes. 
     mainPanel(
@@ -55,7 +55,9 @@ ui <- fluidPage(
       br(),
       textOutput("graphone_intro"),
       br(),
-      plotOutput("plot")
+      plotOutput("plot"),
+      br(),
+      uiOutput("lowest_rate")
     )
   )
 )

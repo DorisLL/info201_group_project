@@ -32,28 +32,63 @@ shinyServer(function(input, output) {
   })
 
   output$plot <- renderPlot({
-    if(is.null(input$allneighborhood)| is.null(input$allsubcat))
+    if(is.null(input$allprecinct)| is.null(input$allsubcat))
       return()
     selected_data <- filter(crime_data, crime_data$Year >= input$years[1], crime_data$Year <= input$years[2],
-                            crime_data$Neighborhood %in% toupper(input$allneighborhood),
+                            crime_data$Precinct %in% toupper(input$allprecinct),
                             crime_data$Crime.Subcategory %in% toupper(input$allsubcat)
     )
-    data_use <- count(group_by(selected_data, Year, Neighborhood))
-    ggplot(data_use, aes(Year, n, group = data_use$Neighborhood)) +
+    data_use <- count(group_by(selected_data, Year, Precinct))
+    ggplot(data_use, aes(Year, n, group = data_use$Precinct)) +
       ggtitle("Seattle Crime Rates") +
       xlab("Year") + ylab("Rate of Crime") +
-      geom_line(aes(col = Neighborhood)) +
-      geom_point()
+      geom_line(aes(col = Precinct)) +
+      geom_point(aes(col = Precinct))
   })
-
-  output$select_nh <-renderUI({
-    checkboxGroupInput("allneighborhood", label = h3("Select neighborhood"),
-                       tolower(unique(crime_data$Neighborhood)))
+  #_____________________________________
+#  selected_data <- filter(crime_data, crime_data$Year >= 2010, crime_data$Year <= 2017,
+#                          crime_data$Precinct %in% c("WEST", "NORTH", "SOUTH"),
+#                          crime_data$Crime.Subcategory %in% c("CAR PROWL", "WEAPON", "TRESPASS")
+#  )
+#  data_use <- count(group_by(selected_data, Year, Precinct))
+#  ggplot(data_use, aes(Year, n, group = data_use$Precinct)) +
+#    ggtitle("Seattle Crime Rates") +
+#    xlab("Year") + ylab("Rate of Crime") +
+#    geom_line(aes(col = Precinct)) +
+#    geom_point()
+#})
+  
+  
+  
+  #____________________________________________________
+  output$select_pc <-renderUI({
+    checkboxGroupInput("allprecinct", label = h3("Select precincts"),
+                       tolower(unique(crime_data$Precinct)))
   })
   
   output$select_type <- renderUI ({
     checkboxGroupInput("allsubcat", label = h3("Select categories of crime"),
                        tolower(unique(crime_data$Crime.Subcategory)), tolower(unique(crime_data$Crime.Subcategory)))
+  })
+  
+  output$lowest_rate <- renderText ({
+    if(is.null(input$allprecinct)| is.null(input$allsubcat))
+      return()
+    selected_data <- filter(crime_data, crime_data$Year >= input$years[1], crime_data$Year <= input$years[2],
+                            crime_data$Precinct %in% toupper(input$allprecinct),
+                            crime_data$Crime.Subcategory %in% toupper(input$allsubcat)
+    )
+    data_use <- count(group_by(selected_data, Year, Precinct))
+    sum_pc <- data_use %>% 
+      group_by(Precinct) %>% 
+      summarise(sum(n))
+    lowest_name <- filter(sum_pc, sum_pc$`sum(n)` == min(sum_pc$`sum(n)`))$Precinct
+    highest_name <- filter(sum_pc, sum_pc$`sum(n)` == max(sum_pc$`sum(n)`))$Precinct
+    paste("Within the selected precincts, ", lowest_name, 
+          " Seattle has the lowest crime rate in general throughout the selected years (",
+          input$years[1], "-", input$years[2], "), with the selected categories of crime. 
+          In contrast, ", highest_name, " has the highest crime rate.")
+
   })
   
 })
