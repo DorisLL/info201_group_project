@@ -23,13 +23,13 @@ navbarPage(
                the information and statistics, people can take the necessary precautions
                to protect their safety and their possessions."),
              p("This can be achieved through various interactive graphs that show:"),
-             tags$ol(
+             tags$b(tags$ol(
                tags$li("Frequencies of each type of crime in a selected neighborhood
                        in Seattle"),
                tags$li("Crime rates of selected categories of crime in a selected 
                        precinct in Seattle and their trends over time"), 
                tags$li("Frequencies of a selected crime throughout the day ")
-               ),
+               )),
              br()
              )
   ), 
