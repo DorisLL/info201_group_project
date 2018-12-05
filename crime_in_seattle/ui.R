@@ -5,7 +5,9 @@ navbarPage(
   tabPanel("About",
            titlePanel("Overview"),
            mainPanel(
-             img(src = 'crime.jpg', height = 300, width = 500),
+             img(src = 'crime.jpg', height = 400, width = 600),
+             br(),
+             br(),
              p("The data that we explored for our final group project 
                is ‘Crime Data’ data set, which includes crime reports 
                logged in the Departments Records Management System (RMS) 
@@ -17,13 +19,15 @@ navbarPage(
              p("Our goal is to inform to our target audience, students and 
                homeowners who primarily work/study in or inhabit the Seattle 
                Area, which areas are the least safe around Seattle so they 
-               can be more careful around those parts of town."),
+               can be more careful around those parts of town. By looking at 
+               the information and statistics, people can take the necessary precautions
+               to protect their safety and their possessions."),
              p("This can be achieved through various interactive graphs that show:"),
              tags$ol(
                tags$li("Frequencies of each type of crime in a selected neighborhood
                        in Seattle"),
                tags$li("Crime rates of selected categories of crime in a selected 
-                       precinct in Seattle"), 
+                       precinct in Seattle and their trends over time"), 
                tags$li("Frequencies of a selected crime throughout the day ")
                ),
              br()
