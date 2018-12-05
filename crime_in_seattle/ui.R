@@ -54,7 +54,8 @@ navbarPage(
            mainPanel(
              plotOutput("plot"),
              br(),
-             uiOutput("lowest_rate")
+             uiOutput("lowest_rate"),
+             img(src = 'precincts.png', height = 450, width = 300)
              )
            ),
   tabPanel("Graph 3", 
