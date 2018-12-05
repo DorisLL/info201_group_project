@@ -25,8 +25,7 @@ crime_data <- filter(crime_data, crime_data$Year > 2007)
 crime_data <- crime_data %>% select("Month", "Day", "Year", "Occurred.Time", "Crime.Subcategory", "Neighborhood", "Precinct")
 
 # Fix Time 
-crime_data$Occurred.Time <- as.POSIXlt(crime_data$Occurred.Time, format="%H:%M")$hour
-crime_data$Occurred.Time[is.na(crime_data$Occurred.Time)] <- 0
+crime_data$Occurred.Time<- as.POSIXct(sprintf("%04d", crime_data$Occurred.Time), format="%H%M")
 
 # Function to remove long category and retain only the main category
 main_category <- function(word){

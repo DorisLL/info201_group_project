@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 
 crime_data <- read.csv('data/updated_crime_data.csv', stringsAsFactors = FALSE) %>% data.frame()
 
@@ -45,22 +46,11 @@ shinyServer(function(input, output) {
       geom_line(aes(col = Precinct)) +
       geom_point(aes(col = Precinct))
   })
-  #_____________________________________
-#  selected_data <- filter(crime_data, crime_data$Year >= 2010, crime_data$Year <= 2017,
-#                          crime_data$Precinct %in% c("WEST", "NORTH", "SOUTH"),
-#                          crime_data$Crime.Subcategory %in% c("CAR PROWL", "WEAPON", "TRESPASS")
-#  )
-#  data_use <- count(group_by(selected_data, Year, Precinct))
-#  ggplot(data_use, aes(Year, n, group = data_use$Precinct)) +
-#    ggtitle("Seattle Crime Rates") +
-#    xlab("Year") + ylab("Rate of Crime") +
-#    geom_line(aes(col = Precinct)) +
-#    geom_point()
-#})
-  
-  
-  
-  #____________________________________________________
+
+  output$select_nh <- renderUI({
+    selectInput("neighborhood", label = h3("Select neighborhood"), 
+                choices = tolower(unique(crime_data$Neighborhood)))
+  })
   output$select_pc <-renderUI({
     checkboxGroupInput("allprecinct", label = h3("Select precincts"),
                        tolower(unique(crime_data$Precinct)))
