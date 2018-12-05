@@ -3,7 +3,7 @@ library(shiny)
 navbarPage(
   "Criminal Activity",
   tabPanel("Graph 1",
-           titlePanel("Crime Rates in Seattle"),
+           titlePanel("Crime Rates in Seattle by Neighborhood"),
              sidebarPanel(
                helpText("You can see what kind of crimes occurred 
                         in a selected the neighborhood."),
@@ -17,6 +17,7 @@ navbarPage(
              )
   ),
   tabPanel("Graph 2", 
+           titlePanel("Crime Rates in Seattle by Precinct"),
            sidebarPanel(
            uiOutput("select_pc"),
            uiOutput("select_type"),
@@ -30,6 +31,7 @@ navbarPage(
              )
            ),
   tabPanel("Graph 3", 
+           titlePanel("Crime Rates in Seattle by Time"),
            sidebarPanel(
              uiOutput("select_timecrime")
            ),
