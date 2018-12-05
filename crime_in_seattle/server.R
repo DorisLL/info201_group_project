@@ -11,7 +11,7 @@ shinyServer(function(input, output) {
   d <- reactive({
     chosen_neighborhood <- toupper(input$neighborhood)
     data <- filter(crime_data, Neighborhood == chosen_neighborhood)
-    return(data)
+    data
   })
   
   output$graphone <- renderPlot({
@@ -25,7 +25,7 @@ shinyServer(function(input, output) {
       geom_bar(mapping = aes(x = Subcategory, y = Freq), stat = "identity") +
       labs(title = "Frequencies of Crime Subcategories") +
       coord_flip()
-    return(p)
+    p
   })
   
   output$graphone_intro <- renderText({
