@@ -4,7 +4,7 @@
 
 ## Overview 
 
-![Crime](crime.jpg)
+![Crime](crime_in_seattle/www/crime.jpg)
 
 We used a "Crime Data" dataset, which includes crime reports logged in the Departments Records Management System (RMS) since 2008, downloaded from [Data.gov](https://catalog.data.gov/dataset/crime-data-76bd0?fbclid=IwAR34NWjPQ1rvBMGHJqf21mUXiI35vi7ul8zNjMGkmAekaRXyxx-LYgQ7A_c). The dataset is provided by the Seattle Police Department with reports around the Seattle area and is updated daily.
 
