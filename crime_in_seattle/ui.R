@@ -13,7 +13,8 @@ navbarPage(
                uiOutput("select_type"),
                sliderInput("years", h3("Years:"),
                            2008, 2018, 
-                           c(2008, 2018))),
+                           c(2008, 2018)),
+               uiOutput("select_timecrime")),
              
              # Show a bar chart of neighborhood vs. subcatagories of crimes. 
              mainPanel(
@@ -23,7 +24,12 @@ navbarPage(
                br(),
                plotOutput("plot"),
                br(),
-               uiOutput("lowest_rate")
+               uiOutput("lowest_rate"),
+               br(),
+               plotOutput("times"),
+               br(),
+               textOutput("times_intro"),
+               br()
              )
              )
   ),

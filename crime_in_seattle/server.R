@@ -74,7 +74,7 @@ shinyServer(function(input, output) {
   
   output$select_timecrime <- renderUI({
     selectInput("timecrime", label = h3("Select crime for hourly data"), 
-                choices = unique(crime_data$Occurred.Time))
+                choices = unique(crime_data$Crime.Subcategory))
   })
   
   output$lowest_rate <- renderText ({
