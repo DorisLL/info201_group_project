@@ -48,7 +48,7 @@ navbarPage(
              )
   ),
   tabPanel("Graph 2", 
-           titlePanel("Crime Rates in Seattle by Precinct"),
+           titlePanel("Trends of Crime Occurance throughout years"),
            sidebarPanel(
            uiOutput("select_pc"),
            uiOutput("select_type"),
