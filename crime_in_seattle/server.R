@@ -64,7 +64,7 @@ shinyServer(function(input, output) {
   })
   output$select_pc <-renderUI({
     checkboxGroupInput("allprecinct", label = h3("Select precincts"),
-                       tolower(unique(crime_data$Precinct)))
+                       tolower(unique(crime_data$Precinct)), tolower(unique(crime_data$Precinct)))
   })
   
   output$select_type <- renderUI ({
