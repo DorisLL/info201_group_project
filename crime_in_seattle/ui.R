@@ -35,6 +35,6 @@ library(shiny)
              ),
     tabPanel("About", 
              mainPanel(
-               img(src='crime.jpg')
+               img(src='crime.jpg', height = 300, width = 500)
              ))
   )    
