@@ -29,6 +29,8 @@ crime_data <- crime_data %>% select("Month", "Day", "Year", "Occurred.Time", "Cr
 crime_data$Occurred.Time <- as.POSIXct(sprintf("%04d", crime_data$Occurred.Time), format="%H%M")
 crime_data$Occurred.Time <- hour(crime_data$Occurred.Time)
 
+crime_data <- crime_data %>%
+  filter(Crime.Subcategory != "NA")
 # Function to remove long category and retain only the main category
 main_category <- function(word){
   vector <- strsplit(word, "-")

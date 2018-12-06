@@ -3,10 +3,10 @@ library(shiny)
 navbarPage(
   "Criminal Activity",
   tabPanel("About",
-           titlePanel("Overview"),
+           titlePanel("Crime Rates in Seattle"),
            mainPanel(
              img(src = 'crime.jpg', height = 400, width = 600),
-             br(),
+             h2("Overview"),
              br(),
              p("The data that we explored for our final group project 
                is ‘Crime Data’ data set, which includes crime reports 
@@ -33,7 +33,7 @@ navbarPage(
              br()
              )
   ), 
-  tabPanel("Graph 1",
+  tabPanel("Neighborhood",
            titlePanel("Crime Rates in Seattle by Neighborhood"),
              sidebarPanel(
                helpText("You can see what kind of crimes occurred 
@@ -47,7 +47,7 @@ navbarPage(
                textOutput("graphone_intro")
              )
   ),
-  tabPanel("Graph 2", 
+  tabPanel("Trend", 
            titlePanel("Trends of Crime Occurance throughout years"),
            sidebarPanel(
            uiOutput("select_pc"),
@@ -59,10 +59,10 @@ navbarPage(
              plotOutput("plot"),
              br(),
              uiOutput("lowest_rate"),
-             img(src = 'precincts.png', height = 450, width = 300)
+             img(src = 'precincts.png', height = 500, width = 450)
              )
            ),
-  tabPanel("Graph 3", 
+  tabPanel("Day", 
            titlePanel("Crime Rates in Seattle by Time"),
            sidebarPanel(
              uiOutput("select_timecrime")
