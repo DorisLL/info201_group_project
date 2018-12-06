@@ -1,6 +1,7 @@
 library(shiny)
+library(shinythemes)
 
-navbarPage(
+navbarPage(theme = shinytheme("united"),
   "Criminal Activity",
   tabPanel("About",
            tags$style(type="text/css",
@@ -78,7 +79,28 @@ navbarPage(
            mainPanel(
              plotOutput("times"),
              br(),
-             textOutput("times_intro")
+             textOutput("times_intro"),
+             br(), 
+             tags$li("Morning: Crime does not often happen during the morning."),
+             tags$li("Afternoon: Family offense, theft, and pornography."), 
+             tags$li("Evening: Trespass and loitering."),
+             tags$li("Night: Car prowl, sex offense, weapon, burglary, robbery, 
+                     aggravated assault, DUI, motor vehicle theft, narcotic, 
+                     arson, prostitution, rape, homicide, liquor law violation, 
+                     disorderly conduct, and gamble."),
+             br(),
+             p("As you can see, 16 crimes out of 21 crimes mostly happen during 
+                the night. For your safety, we strongly suggest that not to travel 
+                alone during the night.", tags$b("If you have to go somewhere during the night,
+                make sure you travel in groups.")),
+             br(),
+             tags$i(p("Helpful information about hour(s):")),
+             tags$b(tags$ol(
+               tags$li("Morning: Hours 0 - 6"),
+               tags$li("Afternoon: Hours 6 - 12"), 
+               tags$li("Evening: Hours 12 - 18"),
+               tags$li("Night: Hours 18 - 23")
+             ))
            )
           )
 )

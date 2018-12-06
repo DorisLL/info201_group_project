@@ -45,7 +45,9 @@ shinyServer(function(input, output) {
   
     paste0("This graph shows the frequencies of each crime subcategory for the ", input$neighborhood, " neighborhood.",
           " The top three crimes for this neighborhood are ", crime1_name, " (", crime1_frequency, " cases), ", crime2_name,
-          " (", crime2_frequency, " cases), and ", crime3_name, " (", crime3_frequency, " cases).")
+          " (", crime2_frequency, " cases), and ", crime3_name, " (", crime3_frequency, " cases). People who live in ",
+          input$neigborhood, "neighborhood should be more cautious about ", crime1_name, ", ", crime2_name, ", and ",
+          crime3_name, ".")
   })
   
   output$select_pc <-renderUI({
@@ -113,8 +115,9 @@ shinyServer(function(input, output) {
   
   output$times_intro <- renderText({
     paste0("This graph shows the times of the day and the number of cases that were recorded at each 
-           hour of the day for this crime. Hours 0-6 is the Morning. Hours 6-12 is Afternoon. 
-           Hours 12-18 is Evening. Hours 18-23 is Nighttime.")
+           hour of the day for this crime. After analyzing the data about the frequencies of crime
+           throughout the day, we realized that there is a certain period when a specific crime happens 
+           often:")
   })
   
 })
