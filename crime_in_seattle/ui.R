@@ -3,11 +3,14 @@ library(shiny)
 navbarPage(
   "Criminal Activity",
   tabPanel("About",
-           titlePanel("Crime Rates in Seattle"),
+           tags$style(type="text/css",
+                      ".shiny-output-error {visibility: hidden;}",
+                      ".shiny-output-error:before {visibility: hidden;}"
+           ),
+           h1("Crime Rates in Seattle"),
            mainPanel(
-             img(src = 'crime.jpg', height = 400, width = 600),
+             img(src = 'crime.jpg', height = 500, width = 800, align="center"),
              h2("Overview"),
-             br(),
              p("The data that we explored for our final group project 
                is ‘Crime Data’ data set, which includes crime reports 
                logged in the Departments Records Management System (RMS) 
@@ -30,14 +33,19 @@ navbarPage(
                        precinct in Seattle and their trends over time"), 
                tags$li("Frequencies of a selected crime throughout the day ")
                )),
-             br()
+             p("We chose this data set because, living in a large and busy city like Seattle, it
+               important to keep yourself and your belongings safe. With out primary target 
+               auidence as homeowners and people that live in Seattle, this data set tells them
+               which neighborhoods are safer than others and also which ones are more prone to some
+               crimes than others. Our data intepretations and graphs allow users to take the
+               necessary precautions to be safe in Seattle.")
              )
   ), 
   tabPanel("Neighborhood",
            titlePanel("Crime Rates in Seattle by Neighborhood"),
              sidebarPanel(
-               helpText("You can see what kind of crimes occurred 
-                        in a selected the neighborhood."),
+               helpText("You can see the distribution of the crimes 
+                        for a selected neighborhood."),
                uiOutput("select_nh")),
              
              # Show a bar chart of neighborhood vs. subcatagories of crimes. 
