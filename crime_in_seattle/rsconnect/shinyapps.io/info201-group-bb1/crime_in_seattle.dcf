@@ -1,0 +1,12 @@
+name: crime_in_seattle
+title: crime_in_seattle
+username:
+account: info201-group-bb1
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 606350
+bundleId: 1744928
+url: https://info201-group-bb1.shinyapps.io/crime_in_seattle/
+when: 1544077806.79626
+asMultiple: FALSE
+asStatic: FALSE

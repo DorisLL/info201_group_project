@@ -13,7 +13,7 @@ navbarPage(theme = shinytheme("united"),
              img(src = 'crime.jpg', height = 500, width = 800, align="center"),
              h2("Overview"),
              p("The data that we explored for our final group project 
-               is ‘Crime Data’ data set, which includes crime reports 
+               is 'Crime Data' data set, which includes crime reports 
                logged in the Departments Records Management System (RMS) 
                since 2008, downloaded from", 
                a("Data.gov.",
